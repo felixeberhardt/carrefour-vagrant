@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+faketty () {
+    script -qefc "$(printf "%q " "$@")"
+}
+
 # extend root partition
 sudo apt-get install -y parted
-sudo parted -s /dev/vda resizepart 1 100%
+faketty sudo parted /dev/vda resizepart 1 yes 100% print
 sudo resize2fs /dev/vda1
 
 # install required packages
@@ -22,10 +26,6 @@ git checkout replication-v3.9
 )
 
 # build
-faketty () {
-    script -qefc "$(printf "%q " "$@")"
-}
-
 faketty make-kpkg clean
 faketty fakeroot make-kpkg --initrd --revision=3.9.replication kernel_image
 
