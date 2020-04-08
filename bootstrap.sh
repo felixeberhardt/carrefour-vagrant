@@ -29,8 +29,9 @@ git checkout replication-v3.9
 )
 
 # build
-faketty make-kpkg clean
-faketty fakeroot make-kpkg --initrd --revision=3.9.replication kernel_image
+#faketty make-kpkg clean
+#faketty fakeroot make-kpkg --initrd --revision=3.9.replication kernel_image
+cp /vagrant/linux-image-3.9.0-replication+_3.9.replication_amd64.deb ../
 
 # install
 sudo dpkg -i ../linux-image-3.9.0-replication+_3.9.replication_amd64.deb
