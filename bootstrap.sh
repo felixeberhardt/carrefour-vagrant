@@ -40,5 +40,8 @@ sudo dpkg -i ../linux-image-3.9.0-replication+_3.9.replication_amd64.deb
 sudo sed -i 's|^GRUB_DEFAULT=.*|GRUB_DEFAULT="Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 3.9.0-replication+"|' /etc/default/grub
 sudo update-grub
 
+# install needed packages
+sudo apt-get install -y libnuma-dev ctags
+
 # needs a reboot now!
 echo "setup complete. reboot now!"
